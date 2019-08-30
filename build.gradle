@@ -29,4 +29,5 @@ dependencies {
     runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
     annotationProcessor 'org.projectlombok:lombok'
     compile group: 'com.ibeetl', name: 'beetl-framework-starter', version: '1.2.13.RELEASE'
+    compile group: 'com.ibeetl', name: 'beetlsql', version: '2.12.11.RELEASE'
 }

@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import java.io.File;
 
 /**
- * 文件名
+ * Beetl 模板配置
  * 作者：xinggang
  * 邮箱：willcoo@qq.com
  * 网址：https://weiku.co
@@ -30,6 +30,7 @@ public class BeetlConf {
 
         BeetlGroupUtilConfiguration beetlGroupUtilConfiguration = new BeetlGroupUtilConfiguration();
 
+        //模板分离，打包成 jar 后模板文件放在 jar 所在目录的 resources 目录下
         ApplicationHome home = new ApplicationHome(getClass());
         String rootPath;
         if (home.getSource().getPath().endsWith(".jar")) {
@@ -37,7 +38,7 @@ public class BeetlConf {
         } else {
             rootPath = home.getDir().getParent(); //开发环境目录
         }
-        String root = rootPath + File.separator + "resources/templates";
+        String root = rootPath + File.separator + "resources/" + templatesPath;
         FileResourceLoader resourceLoader = new FileResourceLoader(root, "utf-8");
         beetlGroupUtilConfiguration.setResourceLoader(resourceLoader);
         beetlGroupUtilConfiguration.init();
