@@ -36,9 +36,10 @@ public class BeetlConf {
         if (home.getSource().getPath().endsWith(".jar")) {
             rootPath = home.getDir().getPath(); //打包后jar包目录
         } else {
-            rootPath = home.getDir().getParent(); //开发环境目录
+            rootPath = home.getDir().getParentFile().getParentFile().getParent() + File.separator + "resources" + File.separator + "main"; //开发环境目录:idea 2019.2
+            rootPath = home.getDir().getParent() + File.separator + "resources"; //开发环境目录:idea 2018.3
         }
-        String root = rootPath + File.separator + "resources/" + templatesPath;
+        String root = rootPath + File.separator + templatesPath;
         FileResourceLoader resourceLoader = new FileResourceLoader(root, "utf-8");
         beetlGroupUtilConfiguration.setResourceLoader(resourceLoader);
         beetlGroupUtilConfiguration.init();
